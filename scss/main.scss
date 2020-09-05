@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+
+$bp-small: 22em; // 350px/16 = 22em
+$bp-medium: 50em; // 800px/16 = 50em
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* 
+  * (10/16)*100=62.5% - Using 10 to easily use rem units as 1 rem == 10px 
+  * 16 because default font-size is 16px
+  * COnverting it to % so that if user has increased font-size in the browser
+  * then it doesn't affect it
+  */
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  background: url('../../images/bg-mobile.png') no-repeat;
+  font-family: 'Raleway', sans-serif;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  background-color: hsl(228, 56%, 26%);
+  border-radius: 0.7rem;
+  border-top-right-radius: 8rem;
+  min-height: 16rem;
+  min-width: 27rem;
+  padding: 0.9rem 2.8rem;
+
+  &__logo {
+    padding: 2rem 0;
+    max-width: 100%;
+    height: auto;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 1.4rem;
+
+    margin-bottom: 2rem;
+
+    &--icon {
+      background: hsl(229, 57%, 11%);
+      border-radius: 1rem;
+      max-height: 4rem;
+      min-width: 4rem;
+      padding: 1rem;
+      text-align: center;
+    }
+  }
+}
+
+.footer {
+  background-color: hsl(228, 56%, 26%);
+  border-radius: 0.7rem;
+  color: hsl(243, 100%, 93%);
+  font-size: 1.2rem;
+  margin-top: 1.4rem;
+  min-height: 16rem;
+  min-width: 27rem;
+  padding: 3rem 0;
+  position: relative;
+  text-align: center;
+
+  &__range {
+    background-color: hsl(229, 57%, 11%);
+    border-radius: 1rem;
+    height: 1.5rem;
+    margin: 1.4rem auto 0;
+    overflow: hidden;
+    position: relative;
+    width: 80%;
+
+    display: flex;
+    align-items: center;
+
+    &--bar {
+      background: linear-gradient(
+        to right,
+        hsl(6, 100%, 80%),
+        hsl(335, 100%, 65%)
+      );
+      border-radius: 0.7rem;
+      // padding: 0.5rem;
+      margin-left: 0.3rem;
+      margin-right: 0.3rem;
+      position: absolute;
+      height: 1rem;
+      width: 75%;
+
+      &--bar::before {
+        border-radius: 50%;
+        content: '2gb';
+        height: 5rem;
+        width: 5rem;
+      }
+    }
+  }
+
+  &__data {
+    font-weight: 700;
+    padding: 1rem 2.5rem;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__dataleft {
+    background: hsl(243, 100%, 93%);
+    color: hsl(229, 7%, 55%);
+    border-radius: 1rem;
+    font-weight: 700;
+    height: 6rem;
+    letter-spacing: 0.05rem;
+    padding: 0.8rem;
+    text-transform: uppercase;
+    width: 14rem;
+
+    position: absolute;
+    top: 82%;
+    left: 25%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--dataamount {
+      color: hsl(229, 57%, 11%);
+      font-size: 3rem;
+      padding-right: 0.7rem;
+    }
+  }
+}
+
+.attribution {
+  color: hsl(243, 100%, 93%);
+  font-size: 1.1rem;
+  position: absolute;
+  bottom: 2rem;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@media (min-width: $bp-small) {
+  body {
+    background: hsl(229, 57%, 11%);
+  }
+
+  .main {
+    background: no-repeat url('../../images/bg-desktop.png');
+    background-position: bottom;
+    background-size: 100% 50%; // contain 100% 55%
+  }
+}
+
+@media (min-width: $bp-medium) {
+  .main {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .footer {
+    margin-top: 4rem;
+    min-height: 4.5rem;
+    min-width: 48rem;
+    padding: 2rem 0;
+
+    &__title {
+      text-align: start;
+      padding: 0 4.7rem;
+    }
+
+    &__data {
+      padding-left: 4.7rem;
+      padding-right: 4.7rem;
+    }
+
+    &__dataleft {
+      background-color: #fff;
+      top: -3.8rem;
+      left: 29rem;
+      border-bottom-right-radius: 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 85%;
+        width: 0;
+        height: 0;
+        border-left: 2.4rem solid transparent;
+        // border-right: 1rem solid transparent;
+        border-top: 2.4rem solid #fff;
+        clear: both;
+      }
+    }
+  }
+}
